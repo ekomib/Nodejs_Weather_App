@@ -66,14 +66,14 @@ app.get("/Weather", (req, res) => {
           geodatum.latitude,
           geodatum.longitude,
           (error, response) => {
-            const { temperature, weather_desc } = response;
+            const { temperature, weather_desc, windspeed } = response;
             if (error) {
               res.send({
                 Error: error,
               });
             } else if (response) {
               res.send({
-                Forecast: `It is curently ${temperature} degrees out in ${geodatum.location}. It is partly ${weather_desc}`,
+                Forecast: `It is curently ${temperature} degrees out in ${geodatum.location}. It is partly ${weather_desc} and the wind speed is ${windspeed}`,
                 location: geodatum.location,
                 AddressRequested: req.query.address,
               });
