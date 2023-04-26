@@ -10,6 +10,9 @@ console.log(path.join(__dirname, "../public"));
 
 const app = express();
 
+// heroku port
+const port = process.env.PORT || 7000;
+
 // Define paths for express config
 const publicDirectory = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
@@ -121,8 +124,8 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(7000, () => {
-  console.log(`Server is running on port 7000`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 /*
